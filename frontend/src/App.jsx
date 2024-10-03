@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
+export const BASE_URL = 'http://localhost:8080'
+
 function App() {
 
   const [todos, setTodos] = useState ([])
@@ -9,7 +11,7 @@ function App() {
   useEffect(() => {
     //make initial request to backend on first render
     async function test() {
-    const response = await fetch('http://localhost:8080/todos')
+    const response = await fetch(`${Base_URL}/todos`)
     const data = await response.json()
     console.log(data)
     setTodos(data)
@@ -31,7 +33,7 @@ async function handleSubmit(e) {
   }
 
   //make the request
-  const response = await fetch('http://localhost:8080/todos', {
+  const response = await fetch(`${BASE_URL}/todos`, {
     method: 'POST',
     body: JSON.stringify(todo),
     headers: {
@@ -52,7 +54,7 @@ async function handleSubmit(e) {
 }
 //the id is the _id of the todo document to be deleted
 async function handleDelete(id) {
-  const response = await fetch('http://localhost:8080/todos/${id}', {
+  const response = await fetch(`http://localhost:8080/todos/${id}`, {
     method: 'DELETE'
   })  
   //make a copy of the state but also remove the document with the matching id
