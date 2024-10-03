@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
@@ -42,9 +42,12 @@ async function handleSubmit(e) {
     //format the new todo that now has the id and completed property
     const newTodo = await response.json()
     //keep the state in sync with out data
-    setTodos([...todos, data])
+    setTodos([...todos, newTodo])
 
-    console.log(data)
+    //reset the input to an empty string
+    setInput('')
+
+    console.log(newTodo)
 
 }
 
