@@ -1,11 +1,15 @@
 // bring in express from our server setup
 import express from 'express'
-
+// bring in cors to help us reach routes from frontend
+import cors from 'cors'
 //create express app
 const app = express()
 
 //choosing a port
 const PORT = 8080
+
+//Setup Cors middleware from express application
+app.use(cors())
 
 //at least one basic route for testing purposes
 app.get('/test', (req, res) => {
