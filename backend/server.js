@@ -43,7 +43,7 @@ app.get('/todos', async (req, res) => {
  //a route that creates and adds a todo document to the database
  app.post('/todos', async (req, res) => {
     try{
-        console.log(req.body)
+        console.log(req.body);
         const newTodo = await Todo.create(req.body)
         res.status(201).json(newTodo)
         console.log('POST /todos')
